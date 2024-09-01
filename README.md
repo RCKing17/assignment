@@ -99,7 +99,7 @@ The Chat System is a web-based application built using Angular, designed to faci
 ### Routes
 - **AppRoutingModule**: Defines the client-side routes for the application, ensuring navigation between components such as login, dashboard, and chat.
 
-## 4 Node Serve Architecture
+## 4. Node Serve Architecture
 
 ### Modules
 - **Express**: Used for setting up the web server.
