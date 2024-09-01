@@ -1,0 +1,57 @@
+<!-- <div class="container">
+    <h2>Group Management</h2>
+  
+   
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="searchGroups()" placeholder="Search groups by name">
+  </div>
+
+    <form (ngSubmit)="createGroup()">
+      <div class="form-group">
+        <label for="groupName">Group Name</label>
+        <input type="text" class="form-control" id="groupName" [(ngModel)]="newGroup.groupName" name="groupName" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Group</button>
+    </form>
+  
+    <hr>
+  
+    <h3>Existing Groups</h3>
+    <ul class="list-group">
+      <li *ngFor="let group of groups" class="list-group-item">
+        {{ group.groupName }}
+        <button class="btn btn-sm btn-warning" (click)="updateGroup(group)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteGroup(group.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+
+  
+  <ul class="list-group">
+    <li *ngFor="let group of filteredGroups" class="list-group-item">
+      {{ group.groupName }}
+      <button class="btn btn-sm btn-warning" (click)="editGroup(group)">Edit</button>
+      <button class="btn btn-sm btn-danger" (click)="deleteGroup(group.id)">Delete</button>
+    </li>
+  </ul> -->
+
+
+  <h2>Group Management</h2>
+
+<form (ngSubmit)="createGroup()">
+  <div class="form-group">
+    <label for="groupName">Group Name:</label>
+    <input type="text" id="groupName" ngModel="groupName" name="groupName" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Group</button>
+</form>
+
+<hr>
+
+<h3>Existing Groups</h3>
+<ul class="list-group">
+  <li *ngFor="let group of groups" class="list-group-item">
+    {{ group.name }}
+    <button class="btn btn-danger btn-sm float-right" (click)="deleteGroup(group.id)">Delete</button>
+  </li>
+</ul>

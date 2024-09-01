@@ -1,0 +1,62 @@
+<!-- <div class="container mt-5">
+    <h2>Login</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" ngModel="email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" ngModel="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+  </div> -->
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Login</h3>
+          </div>
+          <div class="card-body">
+            <form (submit)="onSubmit()">
+              
+              <!-- Username Field -->
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" ngModel="username" name="username" class="form-control" required>
+                <div [class.d-none]="!submitted || username" class="text-danger">
+                  Username is required
+                </div>
+              </div>
+              
+              <!-- Password Field -->
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" ngModel="password" name="password" class="form-control" required>
+                <div [class.d-none]="!submitted || password" class="text-danger">
+                  Password is required
+                </div>
+              </div>
+              
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+              
+            </form>
+            
+            <!-- Error Message -->
+            <div [class.d-none]="!errorMessage" class="alert alert-danger mt-3">
+              {{ errorMessage }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

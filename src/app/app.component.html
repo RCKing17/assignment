@@ -6,7 +6,7 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
+<!-- 
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -322,7 +322,7 @@
       </div>
     </div>
   </div>
-</main>
+</main> -->
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
@@ -333,4 +333,40 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<router-outlet />
+
+
+
+
+
+
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Chat System</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="authService.isAuthenticated()">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAuthenticated() && authService.hasRole('Super Admin')">
+        <a class="nav-link" routerLink="/user-management" routerLinkActive="active">User Management</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAuthenticated() && authService.hasRole('Group Admin')">
+        <a class="nav-link" routerLink="/group-management" routerLinkActive="active">Group Management</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAuthenticated()">
+        <a class="nav-link" routerLink="/chat" routerLinkActive="active">Chat</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAuthenticated()">
+        <a class="nav-link" (click)="authService.logout()">Logout</a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.isAuthenticated()">
+        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

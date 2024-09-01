@@ -1,0 +1,86 @@
+<!-- <div class="container">
+    <h2>User Management</h2>
+
+ 
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="searchUsers()" placeholder="Search users by username or email">
+  </div>
+  
+  
+    <form (ngSubmit)="createUser()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" [(ngModel)]="newUser.username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="newUser.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="newUser.password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create User</button>
+    </form>
+
+    
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  
+   
+    <hr>
+    <h3>Existing Users</h3>
+    <ul class="list-group">
+      <li *ngFor="let user of users" class="list-group-item">
+        {{ user.username }} ({{ user.email }})
+        <button class="btn btn-sm btn-warning" (click)="editUser(user)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
+  <ul class="list-group">
+    <li *ngFor="let user of filteredUsers" class="list-group-item">
+      {{ user.username }} ({{ user.email }}) - <strong>{{ user.roles[0] }}</strong>
+      <div class="btn-group float-right">
+        <button class="btn btn-sm btn-primary" (click)="changeRole(user, 'User')">Set as User</button>
+        <button class="btn btn-sm btn-warning" (click)="changeRole(user, 'Group Admin')">Set as Group Admin</button>
+        <button class="btn btn-sm btn-danger" (click)="changeRole(user, 'Super Admin')">Set as Super Admin</button>
+      </div>
+    </li>
+  </ul>
+
+
+
+<nav>
+  <ul class="pagination">
+    <li class="page-item" *ngFor="let page of [1, 2, 3, 4, 5]" (click)="changePage(page)">
+      <a class="page-link">{{ page }}</a>
+    </li>
+  </ul>
+</nav> -->
+
+<h2>User Management</h2>
+
+<h3>Existing Users</h3>
+<ul class="list-group">
+  <li *ngFor="let user of users" class="list-group-item">
+    {{ user.username }} - {{ user.roles.join(', ') }}
+    <button class="btn btn-primary btn-sm float-right" (click)="editUser(user)">Edit</button>
+  </li>
+</ul>
+
+<hr>
+
+<form *ngIf="selectedUser" (ngSubmit)="saveUser()">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" id="username" ngModel="selectedUser.username" name="username" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="roles">Roles:</label>
+    <input type="text" id="roles" ngModel="selectedUser.roles" name="roles" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
